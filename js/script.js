@@ -1,7 +1,7 @@
 /* ===== CONFIG : à modifier ===== */
 const CONFIG={
   brand:"TOPS NUTRITION",                 // [PLACEHOLDER] nom de la boutique
-  whatsapp:"2126773340440",        // [PLACEHOLDER] numéro international sans + ni espaces
+  whatsapp:"212773340440",        // [PLACEHOLDER] numéro international sans + ni espaces
   city:"vous",              // [PLACEHOLDER] ville de livraison
   address:"Rabat/Salé",
   email:"nutrition.tops@gmail.ma",
