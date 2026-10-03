@@ -19,7 +19,7 @@ const cardHTML=p=>`<article class="card">${visual(p)}<div class="b"><span class=
 
 /* En-tête, pied de page, bouton WhatsApp flottant (partagés par toutes les pages) */
 document.body.insertAdjacentHTML("afterbegin",`<header><div class="wrap"><a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt="${CONFIG.brand}"></a><nav><a href="catalogue.html">Produits</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav></div></header>`);
-document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap"><div><b>${CONFIG.brand}</b><br>Nutrition sportive · Livraison chez ${CONFIG.city}<br>Paiement à la livraison</div><div><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div><div><a href="faq.html#livraison">Livraison</a><a href="faq.html#cgv">Conditions de vente</a><a href="faq.html#confidentialite">Confidentialité</a></div></div></footer><a class="fab" href="${waGen}" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>`);
+document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap"><div><b>${CONFIG.brand}</b><br>Nutrition sportive · Livraison chez ${CONFIG.city}<br>Paiement à la livraison</div><div><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div></div></footer><a class="fab" href="${waGen}" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>`);
 document.querySelectorAll("[data-city]").forEach(e=>e.textContent=CONFIG.city);
 document.querySelectorAll("[data-brand]").forEach(e=>e.textContent=CONFIG.brand);
 document.querySelectorAll("[data-wa]").forEach(e=>e.href=waGen);
