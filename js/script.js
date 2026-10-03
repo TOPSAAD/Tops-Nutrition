@@ -1,12 +1,12 @@
 /* ===== CONFIG : à modifier ===== */
 const CONFIG={
   brand:"TOPS NUTRITION",                 // [PLACEHOLDER] nom de la boutique
-  whatsapp:"212600000000",        // [PLACEHOLDER] numéro international sans + ni espaces
-  city:"Maroc",              // [PLACEHOLDER] ville de livraison
-  address:"[Adresse à compléter]",
-  email:"contact@exemple.ma",
+  whatsapp:"2126773340440",        // [PLACEHOLDER] numéro international sans + ni espaces
+  city:"vous",              // [PLACEHOLDER] ville de livraison
+  address:"Rabat/Salé",
+  email:"nutrition.tops@gmail.ma",
   delivery:20,                    // frais de livraison en DH (0 = gratuit)
-  formEndpoint:"https://formspree.io/f/xvkgjeyq"                 // ex: "https://formspree.io/f/xxxx" ou Web3Forms
+  sheetUrl:"https://script.google.com/macros/s/AKfycbzTQrWV3PG4Mz2RsrDSd4u9FvYM9S22vV3CgwSDWF2l4K8hY8reg8R_QCX3pbboqkxk/exec"                     // URL /exec de Google Apps Script (voir google-apps-script.gs)
 };
 /* Les produits sont dans js/products.js (géré par manage_products.py) */
 const CATS=["Protéines","Créatine","Gainers","Vitamines","Oméga-3","Pré-workout","Autres"];
@@ -18,8 +18,8 @@ const visual=p=>`<div class="ph">${p.image?`<img src="${p.image}" alt="${p.name}
 const cardHTML=p=>`<article class="card">${visual(p)}<div class="b"><span class="cat">${p.cat}${p.stock?"":" · Bientôt de retour"}</span><h3>${p.name}</h3><p class="mute">${p.short}</p><span class="price">${p.price} DH</span><a class="btn" href="produit.html?id=${p.id}">Voir le produit</a><a class="btn wa" href="${wa(p)}" target="_blank" rel="noopener">WhatsApp</a></div></article>`;
 
 /* En-tête, pied de page, bouton WhatsApp flottant (partagés par toutes les pages) */
-document.body.insertAdjacentHTML("afterbegin",`<header><div class="wrap"><a class="logo" href="index.html">${CONFIG.brand}<b>.</b></a><nav><a href="catalogue.html">Produits</a><a href="faq.html">FAQ</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav></div></header>`);
-document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap"><div><b>${CONFIG.brand}</b><br>Nutrition sportive · Livraison à ${CONFIG.city}<br>Paiement à la livraison</div><div><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div><div><a href="faq.html#livraison">Livraison</a><a href="faq.html#cgv">Conditions de vente</a><a href="faq.html#confidentialite">Confidentialité</a></div></div></footer><a class="fab" href="${waGen}" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>`);
+document.body.insertAdjacentHTML("afterbegin",`<header><div class="wrap"><a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt="${CONFIG.brand}"></a><nav><a href="catalogue.html">Produits</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav></div></header>`);
+document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap"><div><b>${CONFIG.brand}</b><br>Nutrition sportive · Livraison chez ${CONFIG.city}<br>Paiement à la livraison</div><div><a href="catalogue.html">Catalogue</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div><div><a href="faq.html#livraison">Livraison</a><a href="faq.html#cgv">Conditions de vente</a><a href="faq.html#confidentialite">Confidentialité</a></div></div></footer><a class="fab" href="${waGen}" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>`);
 document.querySelectorAll("[data-city]").forEach(e=>e.textContent=CONFIG.city);
 document.querySelectorAll("[data-brand]").forEach(e=>e.textContent=CONFIG.brand);
 document.querySelectorAll("[data-wa]").forEach(e=>e.href=waGen);
@@ -49,6 +49,6 @@ if($("#orderForm")){const sel=$("#psel"),qty=$("#qty"),p0=find(get("id"));
  sel.onchange=qty.oninput=upd;upd();
  $("#orderForm").onsubmit=async e=>{e.preventDefault();const f=e.target,btn=$("button",f),tot=upd();btn.disabled=true;btn.textContent="Envoi…";
   const d=Object.fromEntries(new FormData(f));d.produit=find(d.produit).name;d.total=tot+" DH";
-  try{if(CONFIG.formEndpoint)await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});
-   else console.warn("formEndpoint vide : commande non envoyée (mode test)",d);
+  try{if(CONFIG.sheetUrl)await fetch(CONFIG.sheetUrl,{method:"POST",mode:"no-cors",body:new URLSearchParams(d)});
+   else console.warn("sheetUrl vide : commande non envoyée (mode test)",d);
    location.href="merci.html"}catch(err){btn.disabled=false;btn.textContent="Confirmer ma commande";alert("L'envoi a échoué. Réessayez ou commandez sur WhatsApp.")}}}

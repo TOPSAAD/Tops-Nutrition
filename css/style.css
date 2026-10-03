@@ -4,8 +4,9 @@
     --card: #fff;
     --ink: #0E1A2B;
     --mute: #5B6676;
-    --accent: #2B4BFF;
-    --accent-d: #1C36CC;
+    --accent: #8CE600;
+    --accent-d: #74C200;
+    --accent-t: #3F7D00;
     --wa: #1FA855;
     --line: #E3E6EB;
     --r: 10px
@@ -20,7 +21,11 @@ body {
     font: 16px/1.55 Barlow, system-ui, sans-serif;
     color: var(--ink);
     background: var(--bg);
-    padding-bottom: 76px
+
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1,
@@ -115,7 +120,7 @@ nav a {
     cursor: pointer;
     font: 700 1rem Barlow;
     background: var(--accent);
-    color: #fff;
+    color: var(--ink);
     text-align: center;
     min-height: 48px
 }
@@ -125,7 +130,8 @@ nav a {
 }
 
 .btn.wa {
-    background: var(--wa)
+    background: var(--wa);
+    color: #fff
 }
 
 .btn.wa:hover {
@@ -214,7 +220,7 @@ nav a {
 
 .price {
     font: 800 1.5rem "Barlow Condensed";
-    color: var(--accent)
+    color: var(--accent-t)
 }
 
 /* Visuel produit (remplacez par <img> quand vous avez les photos) */
@@ -280,7 +286,7 @@ nav a {
     height: 36px;
     border-radius: 50%;
     background: var(--accent);
-    color: #fff;
+    color: var(--ink);
     display: grid;
     place-items: center;
     font-weight: 800
@@ -331,8 +337,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    outline: 2px solid var(--accent);
-    border-color: var(--accent)
+    outline: 2px solid var(--accent-t);
+    border-color: var(--accent-t)
 }
 
 label {
@@ -446,7 +452,10 @@ footer {
     background: var(--ink);
     color: #C5CCD8;
     padding: 36px 0;
-    font-size: .95rem
+    font-size: .95rem;
+    margin-top: auto;
+    padding-bottom: 90px;
+
 }
 
 footer .wrap {
@@ -476,6 +485,11 @@ footer a {
 }
 
 :focus-visible {
-    outline: 3px solid var(--accent);
+    outline: 3px solid var(--accent-t);
     outline-offset: 2px
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block
 }

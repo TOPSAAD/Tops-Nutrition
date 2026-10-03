@@ -118,12 +118,14 @@ const PRODUCTS = [
     "cat": "Protéines",
     "price": 600,
     "size": "2kg",
-    "image": "images/whey-isolate.jpg",
+    "image": "",
     "stock": true,
-    "short": "bon produit",
-    "desc": "Bon supplement alimentaire",
+    "short": "Whey isolate en poudre pour compléter vos apports en protéines.",
+    "desc": "Protéine de lactosérum isolate à mélanger avec de l'eau ou du lait, à intégrer à une alimentation équilibrée et à un entraînement régulier.",
     "benefits": [
-      "protein"
+      "Source de protéines",
+      "Facile à préparer",
+      "À associer à une alimentation variée"
     ]
   }
 ];
